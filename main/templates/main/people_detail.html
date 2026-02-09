@@ -1,0 +1,60 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ people.Full_Name }}{% endblock %}
+
+{% block content %}
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+      h1{
+          position: relative;
+          padding-top: 7.81vw;
+          padding-bottom: 2.6vw;
+          margin-left: 13vw;
+          text-indent: 12vw;
+          color: #228B22;
+          text-align: center;
+          justify-content: center;
+          display: flex;
+          font-weight: bold;
+          width: 80%;
+        }
+    h4{
+      position: relative;
+      padding-top: 3vw;
+      margin-left: 25vw;
+      display: flex;
+      justify-content: space-between;
+      width: 65%;
+      color: #000000;
+      text-align: center;
+      }
+    .people-detail img {
+      display: block;
+      float: left;
+      margin-left: 51vw;
+      border-radius: 50%;
+      object-fit: cover;
+      width: 16%;
+      height: 80%;
+    }
+  </style>
+</head>
+<body>
+    <div> class="features"
+        <div class="people-detail">
+            {% if people %}
+              <h1>{{ people.Full_Name}}</h1>
+              <img src="{{ people.Photo }}">
+              <h4>Научная степень: {{ people.Scientific_Degree }} </h4>
+              <h4>Научное звание: {{ people.Scientific_Title }} </h4>
+            {% else %}
+              <h4>Новость не найдена.</h4>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

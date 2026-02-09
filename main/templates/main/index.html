@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <style>
+        h1{
+          font-size: 2vw;
+          position: fixed;
+          top:20vw;
+          margin-left: 7vw;
+          justify-content: center;
+          width: 100%;
+          color: #228B22;
+          text-align: center;
+          font-weight: bold;
+        }
+        h4{
+            font-size: 1.5vw;
+            position: fixed;
+            margin-top: 24vw;
+            margin-left: 14vw;
+            width: 85%;
+            color: rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        body{background-image:url("{% static 'main/img/SFUPhoto.jpg' %}"); background-size: cover; height: 100vh;}
+    </style>
+<h1>Лаборатория экономики климатических изменений и экологического развития</h1>
+<h4>Научная лаборатория, главная цель которой разработка научных основ решения проблем адаптации экономики к климатическим изменениями и экологического развития макрорегиона «Енисейская Сибирь», в том числе на основе минимизации углеродного следа производственных и социально-экономических процессов и развития технологий оценки углеродного баланса.</h4>
+{% endblock %}

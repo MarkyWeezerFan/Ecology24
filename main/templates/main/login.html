@@ -1,0 +1,49 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+name = "antonpyzhev"
+password = "24487296100"
+{% block title %}Авторизация{% endblock %}
+{% block content %}
+<head>
+  <meta charset="UTF-8">
+  <style>
+      h1{
+        position: relative;
+        padding-top: 7vw;
+        padding-left: 28vw;
+        padding-bottom: 4vw;
+        justify-content: center;
+        width: 90%;
+        color: #466f4b;
+        text-align: center;
+        font-weight: bold;
+      }
+      .alert-narrow {
+        left: 34vw;
+        width: 50%;
+      }
+  </style>
+</head>
+<body>
+<h1>Эта страница приватная, для того, чтобы попасть на неё, авторизуйтесь.</h1>
+<div class="loginandpassword">
+    {% if messages %}
+        {% for message in messages %}
+             <div class="alert alert-danger alert-narrow">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="login">
+            <label for="login" class="form-label">Логин</label>
+            <input type="text" id="login" placeholder="Логин" name="login" class="form-control"><br>
+        </div>
+        <div class="password">
+            <label for="password" class="form-label">Пароль</label>
+            <input type="text" id="password" placeholder="Пароль" name="password" class="form-control"><br>
+        </div>
+        <button class="btn btn-success" type="submit">Авторизоваться</button>
+    </form>
+</div>
+</body>
+{% endblock %}

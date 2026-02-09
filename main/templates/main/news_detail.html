@@ -1,0 +1,61 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ news.Title }}{% endblock %}
+
+{% block content %}
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+      h1{
+          position: relative;
+          padding-top: 7.813vw;
+          padding-bottom: 1vw;
+          text-indent: 24vw;
+          color: #228B22;
+          text-align: center;
+          font-weight: bold;
+          width: 90%;
+        }
+    h3{
+      position: relative;
+      margin-top: 2vw;
+      padding-bottom: 1.823vw;
+      margin-left: 26vw;
+      display: flex;
+      justify-content: start;
+      width: 65%;
+      color: #000000;
+      text-align: left;
+      }
+    h4{
+      position: relative;
+      padding-bottom: 2vw;
+      margin-left: 25vw;
+      display: flex;
+      justify-content: center;
+      width: 65%;
+      color: #C0C0C0;
+      text-align: center;
+      }
+    img{
+      margin-left: 44vw;
+  </style>
+</head>
+<body>
+    <div> class="features"
+        <div class="news-detail">
+            {% if news %}
+              <h1>{{ news.Title }}</h1>
+              <h4>{{ news.Date }}; {{ news.Authors }}</h4>
+              <img src="{{ news.News_Picture }}">
+              <h3>{{ news.Full_text }}</h3>
+            {% else %}
+              <h3>Новость не найдена.</h3>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

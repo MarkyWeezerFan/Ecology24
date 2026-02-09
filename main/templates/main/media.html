@@ -1,0 +1,85 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Мы в СМИ!{% endblock %}
+
+{% block content %}
+<head>
+  <meta charset="UTF-8">
+  <title>Photo Grid</title>
+  <style>
+    h1{
+        position: relative;
+        padding-top: 7vw;
+        justify-content: center;
+        width: 100%;
+        text-indent: 11vw;
+        color: #228B22;
+        text-align: center;
+        font-weight: bold;
+    }
+    h5 {
+      position: relative;
+      text-align: left;
+      left: 0.5vw;
+      display: flex;
+      width: 225%;
+      color: #000000;
+      font-weight: bold;
+    }
+    h6 {
+      position: relative;
+      text-align: left;
+      top: 7vw;
+      left: -19.2vw;
+      display: flex;
+      width: 225%;
+      color: #000000;
+    }
+    .container {
+      max-width: 62.5vw;
+      margin: auto;
+      padding: 2vw;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1vw;
+    }
+    .photo-card {
+      height: 10.4vw;
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.5vw;
+      margin-bottom: 2vw;
+    }
+    .photo-card img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+   .photo-card:hover{
+     transform: scale(1.03);
+   }
+  </style>
+</head>
+<body>
+<h1>МЫ В СМИ</h1>
+<div class="container">
+  <div class="grid">
+    {% for photo in photos %}
+    <div class="photo-card">
+      <a href="{{ photo.URL }}">
+      <img src="{{ photo.Preview }}">
+      </a>
+    </div>
+    <h5>{{ photo.Title }}</h5>
+    <h6>{{ photo.Author_Date_of_publication }}</h6>
+    {% endfor %}
+  </div>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ people.Full_Name }}{% endblock %}
+
+{% block content %}
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+      h1{
+          position: relative;
+          padding-top: 7.81vw;
+          padding-bottom: 2.6vw;
+          margin-left: 13vw;
+          text-indent: 12vw;
+          color: #228B22;
+          text-align: center;
+          justify-content: center;
+          display: flex;
+          font-weight: bold;
+          width: 80%;
+        }
+    h4{
+      position: relative;
+      padding-top: 3vw;
+      margin-left: 25vw;
+      display: flex;
+      justify-content: space-between;
+      width: 65%;
+      color: #000000;
+      text-align: center;
+      }
+    .people-detail img {
+      display: block;
+      float: left;
+      margin-left: 51vw;
+      border-radius: 50%;
+      object-fit: cover;
+      width: 16%;
+      height: 80%;
+    }
+  </style>
+</head>
+<body>
+    <div> class="features"
+        <div class="people-detail">
+            {% if people %}
+              <h1>{{ people.Full_Name}}</h1>
+              <img src="{{ people.Photo }}">
+              <h4>Учёная степень: {{ people.Academic_degree }} </h4>
+              <h4>Публикации: {{ people.Publications_for_last_5_years }}</h4>
+              <h4>Участие в проектах и грантах/статус участия: {{ people.Participation_in_projects_grants_and_participation_status_for_last_5_years }}</h4>
+              <h4>Число принятых заявок на гранты: {{ people.Number_of_submitted_grant_applications }}</h4>
+              <h4>Относится ли сотрудник к категории "Молодой учёный"?: {{ people.Does_the_employee_belong_to_the_Young_Scientist_category }}</h4>
+              <h4>Награды за научную деятельность: {{ people.Awards_for_scientific_work }}</h4>
+              <h4>Опыт преподования: {{ people.Teaching_experience }} </h4>
+              <h4>Общий опыт работы: {{ people.Total_experience }}</h4>
+            {% else %}
+              <h4>Новость не найдена.</h4>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ projects.Topic }}{% endblock %}
+
+{% block content %}
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+      h1{
+          position: relative;
+          padding-top: 7.81vw;
+          padding-bottom: 2.6vw;
+          margin-left: 28vw;
+          text-indent: 2vw;
+          color: #228B22;
+          text-align: center;
+          justify-content: center;
+          display: flex;
+          font-weight: bold;
+          width: 60%;
+        }
+    h4{
+      position: relative;
+      padding-bottom: 1.823vw;
+      margin-left: 30vw;
+      width: 65%;
+      color: #000000;
+      text-align: left;
+      }
+  </style>
+</head>
+<body>
+    <div> class="features"
+        <div class="project-detail">
+            {% if projects %}
+              <h1>{{ projects.Topic }}</h1>
+              {% if projects.Cypher %}
+              <h4>Шифр: {{ projects.Сypher }}</h4>
+              {% endif %}
+              {% if projects.Internal_cipher %}
+              <h4>Внутренний шифр: {{ projects.Internal_cipher }}</h4>
+              {% endif %}
+              {% if projects.State_registration_number %}
+              <h4>Номер госрегистрации: {{ projects.State_registration_number }}</h4>
+              {% endif %}
+              {% if projects.Customer %}
+              <h4>Заказчик: {{ projects.Customer }} </h4>
+              {% endif %}
+              {% if projects.Director %}
+              <h4>Руководитель: {{ projects.Director }}</h4>
+              {% endif %}
+              {% if projects.Participators %}
+              <h4>Участники: {{ projects.Participators }}</h4>
+              {% endif %}
+              {% if projects.Support_Record %}
+              <h4>Запись о поддержке: {{ projects.Support_Record }}</h4>
+              {% endif %}
+              {% if projects.Support_Record_on_English %}
+              <h4>Запись на английском: {{ projects.Support_Record_on_English }}</h4>
+              {% endif %}
+              {% if projects.Request %}
+              <h4>Заявка: {{ projects.Request }} </h4>
+              {% endif %}
+              {% if projects.Articles %}
+              <h4>Статьи: {{ projects.Articles }}</h4>
+              {% endif %}
+              {% if projects.Start_Year %}
+              <h4>Год начала: {{ projects.Start_Year }}</h4>
+              {% endif %}
+              {% if projects.End_Year %}
+              <h4>Год конца: {{ projects.End_Year }}</h4>
+              {% endif %}
+              {% if projects.Total_sum %}
+              <h4>Общая сумма: {{ projects.Total_sum }}</h4>
+              {% endif %}
+              {% if projects.Contest %}
+              <h4>Конкурс: {{ projects.Contest }}</h4>
+              {% endif %}
+              {% if projects.Status %}
+              <h4>Статус: {{ projects.Status }}</h4>
+              {% endif %}
+              {% if projects.Plan %}
+              <h4>План: {{ projects.Plan }}</h4>
+              {% endif %}
+            {% else %}
+              <h6>Проект не найден.</h6>
+            {% endif %}
+
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

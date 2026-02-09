@@ -1,0 +1,43 @@
+body {
+    background : #FFFAFA;
+}
+
+aside {
+    position: fixed;
+    display: fixed;
+    float: left;
+    background: #758A2B;
+    width: 13%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 0.2vw solid #90B50E
+}
+
+aside img {
+    width: 6vw;
+    height: 6vw;
+    float: center;
+    display: block;
+    margin: 0.5vw 2vw 1.042vw;
+}
+
+aside ul {list-style: none}
+aside ul li {
+    color:#fff;
+    display: block;
+    text-align: center;
+    margin-top: 1.75vw;
+    font-size: 1vw;
+    transition: all .7s ease;
+}
+aside ul li:hover, aside ul a:hover {
+    color: #7cfc00;
+    transform: scale(1.05);
+}
+
+form{
+    margin-left:34vw;
+    padding-bottom:5vw;
+    width:50vw;
+}

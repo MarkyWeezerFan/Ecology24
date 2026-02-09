@@ -1,0 +1,100 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Аналитика{% endblock %}
+
+{% block content %}
+<head>
+  <meta charset="UTF-8">
+  <style>
+      h1{
+        position: relative;
+        padding-top: 5vw;
+        padding-left: 28vw;
+        padding-bottom: 4vw;
+        justify-content: center;
+        width: 90%;
+        color: #228B22;
+        text-align: center;
+        font-weight: bold;
+      }
+      .window{
+        margin-left: 15vw;
+      }
+      .employee-info{
+        margin-left: 15vw;
+      }
+      .employee-Name{
+        color: #758A2B;
+      }
+      a{
+        text-decoration: none;
+        color: #2E8B57;
+      }
+      a:hover {
+        color: #115533;
+      }
+  </style>
+</head>
+<body>
+<h1>Аналитика</h1>
+<div class="diagrammes">
+  <img src="{% static 'main/img/publications.png' %}" alt="Публикации" style="width: 40vw; height: 26vw; margin-left: 38.5vw;">
+  <img src="{% static 'main/img/people.png' %}" alt="МолодойУчёный" style="width: 30vw; height: 31vw; margin-left: 46vw; margin-top: 5vw;">
+</div>
+<div class="window">
+    <form method="GET" class="select-container">
+    <select name="employee_id" id="employee-select">
+       <option value="">Выберите сотрудника</option>
+       {% for employee in employees %}
+           {% if employee.ID %}
+           <option value="{{ employee.ID }}">
+               {{ employee.Full_Name }}
+           </option>
+           {% endif %}
+       {% endfor %}
+    </select>
+    <button type="submit">Найти данные</button>
+    </form>
+
+    {% if selected_employee %}
+    <div class="info">
+        <div class="employee-info">
+            <div class="employee-Name">
+            <h3><strong>{{ selected_employee.Full_Name }}</strong></h3>
+            {% if selected_employee.Scientific_Degree %}
+            <h4><strong>Научная степень: {{ selected_employee.Scientific_Degree }}</strong></h4>
+            {% endif %}
+            {% if selected_employee.Scientific_Title %}
+            <h4><strong>Научное звание: {{ selected_employee.Scientific_Title }}</strong></h4>
+            {% endif %}
+            </div>
+            <h4>Публикации за последние 5 лет - {{ pub_count }} шт.</h4>
+            <h4>Участие в проектах и грантах за последние 5 лет - {{ proj_count }} шт.</h4>
+            {% if young %}
+            <h4>Относится ли сотрудник к категории "Молодой учёный"? - Да</h4>
+            {% else %}
+            <h4>Относится ли сотрудник к категории "Молодой учёный"? - Нет</h4>
+            {% endif %}
+            {% if selected_employee.SPIN %}
+            <h4>SPIN - {{ selected_employee.SPIN }}</h4>
+            {% endif %}
+            {% if selected_employee.AuthorID_elibrary %}
+            <h4>AuthorID (elibrary) - {{ selected_employee.AuthorID_elibrary }}</h4>
+            {% endif %}
+            {% if selected_employee.WoS_Researcher_ID %}
+            <h4>WoS Researcher ID - {{ selected_employee.WoS_Researcher_ID }}</h4>
+            {% endif %}
+            {% if selected_employee.Scopus_Author_ID %}
+            <h4>Scopus Author ID - {{ selected_employee.Scopus_Author_ID }}</h4>
+            {% endif %}
+            {% if selected_employee.ORCID %}
+            <h4>ORCID - {{ selected_employee.ORCID }}</h4>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+</body>
+{% endblock %}
+

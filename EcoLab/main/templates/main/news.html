@@ -1,0 +1,86 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+<head>
+  <meta charset="UTF-8">
+  <title>Photo Grid</title>
+  <style>
+    h1{
+      position: relative;
+      padding-top: 9vw;
+      justify-content: center;
+      width: 100%;
+      text-indent: 11vw;
+      color: #228B22;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* Container and grid styles */
+    .container {
+      max-width: 55vw;
+      margin-top: 3vw;
+      margin-left: 28vw;
+      padding: 1vw;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1vw;
+    }
+
+    /* Photo card styles */
+    .photo-card {
+      height: 15.625vw;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.575vw;
+      box-shadow: 0 0.52vw 0.47vw rgba(0,0,0,0.1);
+    }
+    .photo-card img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    /* Photo details overlay */
+    .photo-details {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      padding: 0.625vw;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .photo-card:hover .photo-details {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Новости лаборатории</h1>
+<div class="container">
+  <div class="grid">
+    {% for photo in photos %}
+    <div class="photo-card">
+      <a href="{% url 'news-detail' photo.ID %}" target="_blank">
+        <img src="{{ photo.News_Picture }}">
+        <div class="photo-details">
+          <h4>{{ photo.Title }}</h4>
+          <h6>{{ photo.Short_description }}, {{ photo.Date }}</h6>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>
+
+{% endblock %}
